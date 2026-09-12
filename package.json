@@ -1,0 +1,97 @@
+{
+	"name": "ffj-deepseek-balance",
+	"displayName": "DeepSeek Balance - flaviofranco.dev",
+	"description": "Displays your DeepSeek account balance in the status bar and shows the breakdown per currency (available, recharged, and promotional).",
+	"version": "1.0.0",
+	"publisher": "FlavioFranco-dev",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"deepseek",
+		"balance",
+		"credits",
+		"usage",
+		"api"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/flaviofrancojunior/vscode-extension-deepseek-balance.git"
+	},
+	"main": "./out/extension.js",
+	"icon": "media/deepseek-logo.png",
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"contributes": {
+		"icons": {
+			"deepseek-logo": {
+				"description": "DeepSeek whale logo",
+				"default": {
+					"fontPath": "media/deepseek-icons.woff2",
+					"fontCharacter": "\\E001"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "deepseek.setKey",
+				"title": "DeepSeek: Set API key"
+			},
+			{
+				"command": "deepseek.clearKey",
+				"title": "DeepSeek: Clear API key"
+			},
+			{
+				"command": "deepseek.showSaldo",
+				"title": "DeepSeek: Show balance"
+			},
+			{
+				"command": "deepseek.refresh",
+				"title": "DeepSeek: Refresh balance now"
+			}
+		],
+		"configuration": {
+			"title": "DeepSeek Balance",
+			"properties": {
+				"deepseek.refreshIntervalMinutes": {
+					"type": "number",
+					"default": 15,
+					"minimum": 1,
+					"maximum": 360,
+					"description": "Interval, in minutes, between balance checks against the DeepSeek API."
+				},
+				"deepseek.lowBalanceThreshold": {
+					"type": "number",
+					"default": 5,
+					"minimum": 0,
+					"description": "Threshold (USD) at which the balance is shown in amber."
+				},
+				"deepseek.criticalBalanceThreshold": {
+					"type": "number",
+					"default": 1,
+					"minimum": 0,
+					"description": "Threshold (USD) at which the balance is shown in red."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"test": "node ./out/test/runTest.js",
+		"pretest": "npm run compile"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^20.14.0",
+		"@types/vscode": "^1.85.0",
+		"mocha": "^12.0.0",
+		"typescript": "^5.5.0"
+	}
+}
