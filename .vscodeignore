@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Source (compiled to out/, which IS packaged)
+src/
+tsconfig.json
+
+# Tests
+**/*.test.js
+**/*.test.ts
+**/test/**
+
+# Tooling / caches
+.venv/
+.vscode-test/
+.copilot-specs-cache/
+
+# VCS
+.git/
+.gitignore
+.gitattributes
+
+# Docs
+README.md
+CHANGELOG.md
+LICENSE
+
+# Logs / OS files
+*.log
+.DS_Store
+Thumbs.db
